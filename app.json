@@ -1,0 +1,34 @@
+{
+  "name": "DealScore",
+  "displayName": "DealScore",
+  "expo": {
+    "name":"DealScore",
+    "sdkVersion": "17.0.0",
+    "icon": "./assets/img/icon.png",
+    "slug": "dealscore",
+    "loading": {
+      "hideExponentText": true,
+      "icon": "./assets/img/loading.png",
+      "backgroundImage": "./assets/img/Splash.png"
+    },
+    "orientation": "portrait",
+    "primaryColor": "#cccccc",
+    "packagerOpts": {
+      "assetExts": [
+        "ttf"
+      ]
+    },
+   "ios": {
+    "supportsTablet": true,
+    "bundleIdentifier": "com.rcanalytics.dealscore"
+  },
+  "android": {
+     "package": "com.rcanalytics.dealscore"
+   },
+  "androidStatusBarColor": "#EEE",
+  "androidStatusBar": {
+    "barStyle": "dark-content",
+    "backgroundColor": "#EEE"
+  }
+  }
+}
