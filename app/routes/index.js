@@ -3,20 +3,20 @@ import { connect } from 'react-redux';
 import { StatusBar, View } from 'react-native';
 import { Router, Scene } from 'react-native-router-flux';
 
-import Login from './components/login/';
-import Home from './components/home';
-import ChatOne from './components/chatOne';
-import ChatScreen from './components/chatScreen';
-import Settings from './components/settings';
-import Profile from './components/profile';
-import EditProfile from './components/editProfile/editprofile';
-import MainImage from './components/editProfile/main-image';
-import CurrentWork from './components/editProfile/currentWork';
-import School from './components/editProfile/school';
-import AddPhoto from './components/editProfile/addphoto';
-import UserDetails from './components/user-details';
-import PhotoCardDetails from './components/photo-card-details';
-import { statusBarColor } from './theme';
+import Login from '../components/login/';
+import Home from '../components/home';
+import ChatOne from '../components/chatOne';
+import ChatScreen from '../components/chatScreen';
+import Settings from '../components/settings';
+import Profile from '../components/profile';
+import EditProfile from '../components/editProfile/editprofile';
+import MainImage from '../components/editProfile/main-image';
+import CurrentWork from '../components/editProfile/currentWork';
+import School from '../components/editProfile/school';
+import AddPhoto from '../components/editProfile/addphoto';
+import UserDetails from '../components/user-details';
+import PhotoCardDetails from '../components/photo-card-details';
+import { statusBarColor } from '../theme';
 
 const RouterWithRedux = connect()(Router);
 
@@ -24,10 +24,7 @@ class AppNavigator extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <StatusBar
-          backgroundColor={statusBarColor}
-          barStyle="default"
-        />
+        <StatusBar backgroundColor={statusBarColor} barStyle="default" />
         <RouterWithRedux>
           <Scene key="root">
             <Scene key="login" component={Login} hideNavBar initial />

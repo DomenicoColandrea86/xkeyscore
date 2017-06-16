@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import AppNavigator from './AppNavigator';
+import AppNavigator from './routes';
 
 class App extends Component {
   render() {
-    return (
-      <AppNavigator store={this.props.store} />
-    );
+    return <AppNavigator store={this.props.store} />;
   }
 }
 
