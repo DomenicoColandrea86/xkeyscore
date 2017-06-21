@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { StatusBar, View } from 'react-native';
 import { Router, Scene } from 'react-native-router-flux';
 
-import Login from '../components/login/';
+import Login from '../screens/login';
 import Home from '../components/home';
 import ChatOne from '../components/chatOne';
 import ChatScreen from '../components/chatScreen';

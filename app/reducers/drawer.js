@@ -1,25 +1,20 @@
+import { fromJS } from 'immutable';
 import { OPEN_DRAWER, CLOSE_DRAWER } from '../actions/drawer';
 
-const initialState = {
+const initialState = fromJS({
   drawerState: 'closed',
   drawerDisabled: true,
-};
+});
 
-const drawer = (state = initialState, action) => {
-  if (action.type === OPEN_DRAWER) {
-    return {
-      ...state,
-      drawerState: 'opened',
-    };
+export default function drawerReducer(state = initialState, action) {
+  switch (action.type) {
+    case OPEN_DRAWER:
+      return state.set('drawerState', action.payload);
+
+    case CLOSE_DRAWER:
+      return state.set('drawerState', action.payload);
+
+    default:
+      return state;
   }
-
-  if (action.type === CLOSE_DRAWER) {
-    return {
-      ...state,
-      drawerState: 'closed',
-    };
-  }
-  return state;
-};
-
-export default drawer;
+}
