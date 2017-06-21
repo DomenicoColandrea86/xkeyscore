@@ -28,7 +28,7 @@ function findOffscreenViewsOfRoot(component) {
     .then(tree => traverseTreeForOffscreenViews(tree, flag))
     .then(() => {
       if (!flag.found) {
-        console.log("Couldn't find any views that were rendered offscreen");
+        console.log('Could not find any views that were rendered offscreen');
       }
     });
 }

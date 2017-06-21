@@ -3,7 +3,7 @@ if (__DEV__) {
   // actionable. This is a list of prefixes to warning messages that we are disabling.
   console.ignoredYellowBox = [
     'SocketProtocolError',
-    "TimeoutError: Event response for 'login' timed out",
+    'TimeoutError: Event response for "login" timed out',
     'Unable to symbolicate stack trace: The stack is null',
     'Calling of `[-RCTUIManager setFrame:forView:]` which is deprecated',
   ];
