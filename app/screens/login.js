@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Container, Content, Text, View } from 'native-base';
-import LoginForm from '../../components/loginForm';
-import { AuthActions } from '../../actions/auth';
+import LoginForm from '../components/loginForm';
+import { AuthActions } from '../actions/auth';
 
 class Login extends Component {
   componentWillMount() {

@@ -1,50 +1,64 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { addNavigationHelpers, StackNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
-import { StatusBar, View } from 'react-native';
-import { Router, Scene } from 'react-native-router-flux';
 
+import Index from '../screens';
 import Login from '../screens/login';
-import Home from '../components/home';
-import ChatOne from '../components/chatOne';
-import ChatScreen from '../components/chatScreen';
-import Settings from '../components/settings';
-import Profile from '../components/profile';
-import EditProfile from '../components/editProfile/editprofile';
-import MainImage from '../components/editProfile/main-image';
-import CurrentWork from '../components/editProfile/currentWork';
-import School from '../components/editProfile/school';
-import AddPhoto from '../components/editProfile/addphoto';
-import UserDetails from '../components/user-details';
-import PhotoCardDetails from '../components/photo-card-details';
-import { statusBarColor } from '../theme';
+import Home from '../screens/home';
 
-const RouterWithRedux = connect()(Router);
+const NAV_ID = 'nav';
+const INITIAL_AUTHENTICATED_ROUTE_NAME = 'Home';
+const INITIAL_UNAUTHENTICATED_ROUTE_NAME = 'Login';
 
-class AppNavigator extends Component {
-  render() {
-    return (
-      <View style={{ flex: 1 }}>
-        <StatusBar backgroundColor={statusBarColor} barStyle="default" />
-        <RouterWithRedux>
-          <Scene key="root">
-            <Scene key="login" component={Login} hideNavBar initial />
-            <Scene key="settings" component={Settings} />
-            <Scene key="chatone" component={ChatOne} />
-            <Scene key="home" component={Home} />
-            <Scene key="chatScreen" component={ChatScreen} />
-            <Scene key="userDetails" component={UserDetails} />
-            <Scene key="profile" component={Profile} />
-            <Scene key="editprofile" component={EditProfile} />
-            <Scene key="mainImage" component={MainImage} />
-            <Scene key="currentwork" component={CurrentWork} />
-            <Scene key="school" component={School} />
-            <Scene key="addphoto" component={AddPhoto} />
-            <Scene key="photoCardDetails" component={PhotoCardDetails} />
-          </Scene>
-        </RouterWithRedux>
-      </View>
-    );
+const AUTHENTICATED_ROUTES = {
+  Home: { screen: Home },
+};
+const UNAUTHENTICATED_ROUTES = {
+  Login: { screen: Login },
+};
+
+export const AppNavigator = StackNavigator(
+  {
+    Index: { screen: Index },
+    ...AUTHENTICATED_ROUTES,
+    ...UNAUTHENTICATED_ROUTES,
+  },
+  {
+    initialRouteName: 'Index',
+    headerMode: 'none',
+    mode: 'modal',
+  },
+);
+
+const ConnectedAppNavigator = connect(state => ({
+  [NAV_ID]: state.get(NAV_ID),
+}))(props =>
+  <AppNavigator
+    navigation={addNavigationHelpers({
+      dispatch: props.dispatch,
+      state: props[NAV_ID],
+    })}
+  />,
+);
+
+export default class RouteConfig {
+  getAppNavigator() {
+    return ConnectedAppNavigator;
+  }
+
+  isAuthenticatedRouteName(routeName) {
+    return !!AUTHENTICATED_ROUTES[routeName];
+  }
+
+  isUnauthenticatedRouteName(routeName) {
+    return !!UNAUTHENTICATED_ROUTES[routeName];
+  }
+
+  getInitialAuthenticatedRouteName() {
+    return INITIAL_AUTHENTICATED_ROUTE_NAME;
+  }
+
+  getInitialUnauthenticatedRouteName() {
+    return INITIAL_UNAUTHENTICATED_ROUTE_NAME;
   }
 }
-
-export default connect()(AppNavigator);

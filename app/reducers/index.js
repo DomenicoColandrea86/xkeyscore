@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux-immutable';
 import { reducer as form } from 'redux-form';
 
-import drawer from './drawer';
 import auth from './auth';
+import nav from './nav';
 
 export default combineReducers({
-  drawer,
   auth,
   form,
+  nav,
 });

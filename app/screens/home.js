@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { View, ActivityIndicator, Dimensions } from 'react-native';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
-import Chat from '../chat';
-import Profile from '../profile';
-import PhotoCard from '../photocard';
-import CustomTabBar from './tabBar';
+import Chat from '../components/chat';
+import Profile from '../components/profile';
+import PhotoCard from '../components/photocard';
+import CustomTabBar from '../components/tabBar';
 
 const { height } = Dimensions.get('window');
 
@@ -27,7 +27,7 @@ export default class Home extends Component {
     if (!this.state.show)
       return (
         <View style={{ flex: 1 }}>
-          <ActivityIndicator size="large" color="red" style={{ top: height / 2.2 }} />
+          <ActivityIndicator size="large" style={{ top: height / 2.2 }} />
         </View>
       );
     return (
