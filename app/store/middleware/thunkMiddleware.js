@@ -3,11 +3,7 @@ import Middleware from './middleware';
 const defaultMiddleware = {
   onDispatch: dispatch => (arg1, arg2, arg3) =>
     typeof arg1 === 'string'
-      ? dispatch({
-          type: arg1,
-          payload: arg2,
-          ...arg3,
-        })
+      ? dispatch({ type: arg1, payload: arg2, ...arg3 })
       : dispatch(arg1),
   onGetState: getState => getState,
   onExtraArgument: () => undefined,
