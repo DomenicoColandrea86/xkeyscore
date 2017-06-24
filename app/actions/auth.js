@@ -1,7 +1,6 @@
-export const AUTHENTICATE = 'app/Auth/AUTHENTICATE';
-export const UNAUTHENTICATE = 'app/Auth/UNAUTHENTICATE';
-export const REDIRECT = 'app/Auth/REDIRECT';
-
+const AUTHENTICATE = 'app/Auth/AUTHENTICATE';
+const UNAUTHENTICATE = 'app/Auth/UNAUTHENTICATE';
+const REDIRECT = 'app/Auth/REDIRECT';
 const LOGIN_REQUEST = 'app/Auth/LOGIN_REQUEST';
 const LOGIN_SUCCESS = 'app/Auth/LOGIN_SUCCESS';
 const LOGIN_ERROR = 'app/Auth/LOGIN_ERROR';
