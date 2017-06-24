@@ -1,39 +1,43 @@
 import { Platform } from 'react-native';
 import { createStore, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
 import devTools from 'remote-redux-devtools';
-import createSagaMiddleware from 'redux-saga';
-import promise from '../utils/promise';
+import { persistStore } from 'redux-persist-immutable';
+import RouteConfiguration from '../routes';
+import PersistConfiguration from './configuration/persistConfiguration';
+import MiddlewareConfiguration from './configuration/middlewareConfiguration';
+import SagaConfiguration from './configuration/sagaConfiguration';
 
-// creates the store
+// Creates the store
 export default (rootReducer, rootSaga) => {
-  const middleware = [thunk, promise];
-  const sagaMiddleware = createSagaMiddleware();
+  const persistConfiguration = new PersistConfiguration();
+  const middlewareConfiguration = new MiddlewareConfiguration();
+  const routeConfiguration = new RouteConfiguration();
+  const sagaConfiguration = new SagaConfiguration();
 
-  middleware.push(sagaMiddleware);
+  // Add libraries middleware
+  middlewareConfiguration.addMiddleware(sagaConfiguration.getMiddleware());
 
-  if (__DEV__) {
-    if (__DEBUGGING_REMOTELY__) {
-      // eslint-disable-next-line import/newline-after-import
-      middleware.push(
-        require('redux-logger').createLogger({
-          collapsed: true,
-          duration: true,
-        }),
-      );
-    }
-  }
+  // Add persist blacklist
+  persistConfiguration.addBlacklist(routeConfiguration.getReducerId());
+  persistConfiguration.addBlacklist('form');
 
+  // Prepare dependencies to create store
+  const middleware = middlewareConfiguration.getMiddleware();
   const enhancers = compose(
     applyMiddleware(...middleware),
+    persistConfiguration.getMigrationEnhancer(),
+    persistConfiguration.getRehydrateEnhancer(),
     devTools({ name: Platform.OS, realtime: true }),
   );
 
-  // Generate our Redux store
+  // Create store
   const store = createStore(rootReducer, enhancers);
 
-  // kick off root saga
-  sagaMiddleware.run(rootSaga);
+  // Start sagas
+  sagaConfiguration.runSaga(rootSaga);
+
+  // Fill store with storage content
+  persistStore(store, persistConfiguration.getConfiguration());
 
   return store;
 };

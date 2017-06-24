@@ -61,4 +61,8 @@ export default class RouteConfig {
   getInitialUnauthenticatedRouteName() {
     return INITIAL_UNAUTHENTICATED_ROUTE_NAME;
   }
+
+  getReducerId() {
+    return NAV_ID;
+  }
 }

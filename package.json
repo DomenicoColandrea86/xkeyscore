@@ -62,6 +62,9 @@
     "redux-form": "^6.8.0",
     "redux-immutable": "^4.0.0",
     "redux-persist": "^4.8.1",
+    "redux-persist-immutable": "^4.3.0",
+    "redux-persist-migrate": "^4.1.0",
+    "redux-persist-transform-immutable": "^4.3.0",
     "redux-saga": "^0.15.3",
     "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1"

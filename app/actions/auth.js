@@ -18,7 +18,6 @@ const unauthenticate = payload => ({
 
 const redirect = payload => ({
   type: REDIRECT,
-  payload,
 });
 
 const loginRequest = payload => ({

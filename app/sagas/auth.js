@@ -40,7 +40,7 @@ function* unauthenticateFlow() {
 }
 
 function* requestLoginAsync({ payload }) {
-  const response = yield call(api.auth.login, payload);
+  const response = yield call(api.auth.login, payload.toJS());
   if (!response.data.err) {
     yield put(AuthActions.loginSuccess(response.data));
     yield put(NavigationActions.navigate({ routeName: 'Home' }));
