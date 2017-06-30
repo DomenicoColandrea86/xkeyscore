@@ -11,9 +11,11 @@ export default StyleSheet.create({
     marginTop: 20,
   },
   valid: {
-    borderColor: '#53E69D',
+    borderColor: 'rgba(0, 0, 0, 0.4)',
+    // borderColor: '#53E69D',
   },
   invalid: {
-    borderColor: '#F55E64',
+    borderColor: 'rgba(0, 0, 0, 0.4)',
+    // borderColor: '#F55E64',
   },
 });

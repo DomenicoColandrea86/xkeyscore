@@ -14,7 +14,7 @@ const LoginForm = props => {
         name={'email'}
         type={'email'}
         component={TextInput}
-        placeholder={'Email'}
+        placeholder={'e.g., email@example.com'}
       />
       <Text style={{ fontWeight: 'bold', marginTop: 20 }}>Password</Text>
       <Field
@@ -22,7 +22,7 @@ const LoginForm = props => {
         name={'password'}
         type={'password'}
         component={TextInput}
-        placeholder={'Password'}
+        placeholder={'e.g., ***********'}
       />
       <TouchableOpacity onPress={props.handleSubmit}>
         <Text style={styles.formSubmit}>Login</Text>

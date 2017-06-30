@@ -3,7 +3,7 @@
   "displayName": "DealScore",
   "expo": {
     "name":"DealScore",
-    "sdkVersion": "17.0.0",
+    "sdkVersion": "18.0.0",
     "icon": "./assets/img/icon.png",
     "slug": "dealscore",
     "loading": {

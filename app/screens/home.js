@@ -1,35 +1,17 @@
 import React, { Component } from 'react';
-import { View, ActivityIndicator, Dimensions } from 'react-native';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 import Chat from '../components/chat';
 import Profile from '../components/profile';
 import PhotoCard from '../components/photocard';
 import CustomTabBar from '../components/tabBar';
+import { makeSelectUser } from '../selectors/app';
 
-const { height } = Dimensions.get('window');
-
-export default class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      page: 'md-flame',
-      show: false,
-    };
-  }
-
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({ show: true });
-    }, 1000);
-  }
+class Home extends Component {
+  componentDidMount() {}
 
   render() {
-    if (!this.state.show)
-      return (
-        <View style={{ flex: 1 }}>
-          <ActivityIndicator size="large" style={{ top: height / 2.2 }} />
-        </View>
-      );
     return (
       <ScrollableTabView
         locked
@@ -37,10 +19,16 @@ export default class Home extends Component {
         style={{ backgroundColor: '#F5F7FB' }}
         renderTabBar={() => <CustomTabBar />}
       >
-        <Profile tabLabel="md-person" />
+        <Profile {...this.props} tabLabel="md-person" />
         <PhotoCard tabLabel="md-flame" />
         <Chat tabLabel="md-chatboxes" />
       </ScrollableTabView>
     );
   }
 }
+
+const mapStateToProps = createStructuredSelector({
+  user: makeSelectUser(),
+});
+
+export default connect(mapStateToProps, null)(Home);

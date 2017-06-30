@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const create = (baseURL = 'https://beta.rcanalytics.com/api/v2/') => {
+const create = (baseURL = 'https://app.rcanalytics.com/api') => {
   return axios.create({
     baseURL,
     headers: { 'Cache-Control': 'no-cache' },

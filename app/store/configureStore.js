@@ -20,6 +20,7 @@ export default (rootReducer, rootSaga) => {
   // Add persist blacklist
   persistConfiguration.addBlacklist(routeConfiguration.getReducerId());
   persistConfiguration.addBlacklist('form');
+  persistConfiguration.addBlacklist('auth');
 
   // Prepare dependencies to create store
   const middleware = middlewareConfiguration.getMiddleware();

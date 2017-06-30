@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-indent-props */
 
-import React from 'react';
+import React, { Component } from 'react';
 import {
   StyleSheet,
   View,
@@ -10,13 +10,9 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-const TabBar = React.createClass({
-  tabIcons: [],
-  propTypes: {
-    goToPage: React.PropTypes.func,
-    activeTab: React.PropTypes.number,
-    tabs: React.PropTypes.array,
-  },
+class TabBar extends Component {
+  tabIcons = [];
+
   render() {
     return (
       <View style={[styles.tabs, this.props.style]}>
@@ -33,10 +29,10 @@ const TabBar = React.createClass({
                     ? {}
                     : styles.iconBtn,
                   {
-                    backgroundColor: tab === 'md-flame' &&
-                      this.props.activeTab === 1
-                      ? 'transparent'
-                      : this.props.activeTab === i ? '#F7524C' : 'lightgrey',
+                    backgroundColor:
+                      tab === 'md-flame' && this.props.activeTab === 1
+                        ? 'transparent'
+                        : this.props.activeTab === i ? '#F7524C' : 'lightgrey',
                   },
                 ]}
               >
@@ -70,8 +66,8 @@ const TabBar = React.createClass({
         })}
       </View>
     );
-  },
-});
+  }
+}
 
 const styles = StyleSheet.create({
   tab: {

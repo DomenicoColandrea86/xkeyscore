@@ -1,6 +1,7 @@
 {
   "presets": ["babel-preset-expo"],
   "plugins": [
+    "transform-object-rest-spread",
     [
       "module-resolver",
       {

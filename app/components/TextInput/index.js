@@ -1,14 +1,16 @@
 import React from 'react';
 import { TextInput, View } from 'react-native';
+
 import styles from './styles';
 
 const MyTextInput = props => {
   const { input, meta, ...inputProps } = props;
 
   // do not display warning if the field has not been touched or if it's currently being edited
-  const validationStyles = meta.touched && !meta.active
-    ? meta.valid ? styles.valid : styles.invalid
-    : null;
+  const validationStyles =
+    meta.touched && !meta.active
+      ? meta.valid ? styles.valid : styles.invalid
+      : null;
 
   return (
     <View style={[styles.inputContainer, validationStyles]}>

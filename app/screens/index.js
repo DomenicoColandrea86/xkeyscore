@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { AuthActions } from '../actions/auth';
+import { AppActions } from '../actions/app';
 
 class Index extends React.Component {
   componentDidMount() {
@@ -18,7 +18,8 @@ Index.propTypes = {
 
 const mapDispatchToProps = dispatch => ({
   redirect() {
-    dispatch(AuthActions.redirect());
+    dispatch(AppActions.redirect());
+    // dispatch(AppActions.unauthenticate());
   },
 });
 

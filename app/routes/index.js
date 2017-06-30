@@ -41,7 +41,7 @@ const ConnectedAppNavigator = connect(state => ({
   />,
 );
 
-export default class RouteConfig {
+class RouteConfig {
   getAppNavigator() {
     return ConnectedAppNavigator;
   }
@@ -66,3 +66,5 @@ export default class RouteConfig {
     return NAV_ID;
   }
 }
+
+export default RouteConfig;
