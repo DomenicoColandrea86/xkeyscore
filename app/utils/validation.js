@@ -18,6 +18,7 @@ function decodeMessages(error) {
   if (error !== null) {
     error.details = error.details.map(e => ({
       // eslint-disable-line no-param-reassign
+      // eslint-disable-line no-param-reassign
       ...e,
       message: he.decode(e.message),
     }));
