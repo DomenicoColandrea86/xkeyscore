@@ -1,3 +1,4 @@
+/* eslint no-param-reassign: 0 */
 import * as _ from 'lodash';
 import Joi from 'react-native-joi';
 import he from 'he';
@@ -17,8 +18,6 @@ function collectErrors(error) {
 function decodeMessages(error) {
   if (error !== null) {
     error.details = error.details.map(e => ({
-      // eslint-disable-line no-param-reassign
-      // eslint-disable-line no-param-reassign
       ...e,
       message: he.decode(e.message),
     }));
@@ -40,7 +39,7 @@ function hydrate(flat) {
 function pickMessages(error) {
   if (error !== null) {
     return Object.keys(error).reduce((obj, key) => {
-      obj[key] = error[key].map(item => item.message); // eslint-disable-line no-param-reassign
+      obj[key] = error[key].map(item => item.message);
       return obj;
     }, {});
   }
