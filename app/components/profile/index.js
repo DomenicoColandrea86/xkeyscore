@@ -56,7 +56,7 @@ class Profile extends Component {
         <View style={styles.goinOut}>
           <View style={styles.goinOutView}>
             <Text style={{ fontSize: 18, fontWeight: '700' }}>
-              Going Out Tonight?
+              Do you love playing DealScore?
             </Text>
             <Text
               style={{
@@ -66,11 +66,11 @@ class Profile extends Component {
                 marginVertical: 10,
               }}
             >
-              Invite your friends to swipe & match with groups of friends going
-              out tonight
+              Invite your friends to swipe & play the coolest game in commercial
+              real estate!
             </Text>
             <Button block rounded style={styles.goinOutBtn}>
-              <Text style={styles.goinOutBtnText}>I&apos;M GOING OUT</Text>
+              <Text style={styles.goinOutBtnText}>SIGN OUT</Text>
             </Button>
           </View>
         </View>
