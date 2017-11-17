@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Image, View, TouchableOpacity, Platform } from 'react-native';
+import { Image, View, TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import {
   Container,
@@ -74,7 +74,7 @@ class PhotoCard extends Component {
   render() {
     return (
       <Container style={styles.wrapper}>
-        <View style={{ marginHorizontal: 15, marginTop: 15, flex: 1 }}>
+        <View style={styles.wrapperView}>
           <DeckSwiper
             activeOpacity={1}
             dataSource={users}
@@ -82,13 +82,9 @@ class PhotoCard extends Component {
             onSwiping={(dir, opa) =>
               this.setState({ direction: dir, opac: opa })}
             renderTop={item =>
-              <Card activeOpacity={1} style={{ borderRadius: 10 }}>
+              <Card activeOpacity={1} style={styles.card}>
                 <CardItem
-                  style={{
-                    borderTopLeftRadius: 10,
-                    overflow: 'hidden',
-                    borderTopRightRadius: 10,
-                  }}
+                  style={styles.cardItem}
                   activeOpacity={1}
                   cardBody
                   onPress={() => Actions.photoCardDetails()}
@@ -111,18 +107,7 @@ class PhotoCard extends Component {
                           transform: [{ rotate: '20deg' }],
                         }}
                       >
-                        <Text
-                          style={{
-                            backgroundColor: 'transparent',
-                            fontSize: 30,
-                            color: '#F7524C',
-                            fontWeight: '900',
-                            textAlign: 'center',
-                            lineHeight: 35,
-                          }}
-                        >
-                          NOPE
-                        </Text>
+                        <Text style={styles.cardMainTextLeft}>NOPE</Text>
                       </View>}
                     {this.state.direction === 'right' &&
                       <View
@@ -141,28 +126,14 @@ class PhotoCard extends Component {
                           transform: [{ rotate: '-20deg' }],
                         }}
                       >
-                        <Text
-                          style={{
-                            backgroundColor: 'transparent',
-                            fontSize: 30,
-                            color: '#59DBB6',
-                            fontWeight: '900',
-                            textAlign: 'center',
-                            lineHeight: 35,
-                          }}
-                        >
-                          Like
-                        </Text>
+                        <Text style={styles.cardMainTextRight}>Like</Text>
                       </View>}
                   </Image>
                 </CardItem>
                 <CardItem
                   activeOpacity={1}
                   onPress={() => Actions.photoCardDetails()}
-                  style={{
-                    borderBottomLeftRadius: 10,
-                    borderBottomRightRadius: 10,
-                  }}
+                  style={styles.cardItem}
                 >
                   <Body>
                     <Text style={styles.textLeft}>
@@ -173,14 +144,8 @@ class PhotoCard extends Component {
                     </Text>
                   </Body>
                   <Right>
-                    <Button
-                      transparent
-                      textStyle={{ color: '#797979', fontWeight: '900' }}
-                    >
-                      <Icon
-                        name="md-book"
-                        style={{ color: '#797979', paddingRight: 4 }}
-                      />
+                    <Button transparent textStyle={styles.cardButton}>
+                      <Icon name="md-book" style={styles.cardIcon} />
                       <Text style={styles.textLeft}>
                         {item.num}
                       </Text>
@@ -189,23 +154,11 @@ class PhotoCard extends Component {
                 </CardItem>
               </Card>}
             renderBottom={item =>
-              <Card style={{ borderRadius: 10 }}>
-                <CardItem
-                  style={{
-                    borderTopLeftRadius: 10,
-                    overflow: 'hidden',
-                    borderTopRightRadius: 10,
-                  }}
-                  cardBody
-                >
+              <Card style={styles.card}>
+                <CardItem style={styles.cardItem} cardBody>
                   <Image style={styles.cardMain} source={item.image} />
                 </CardItem>
-                <CardItem
-                  style={{
-                    borderBottomLeftRadius: 10,
-                    borderBottomRightRadius: 10,
-                  }}
-                >
+                <CardItem style={styles.cardItem}>
                   <Body>
                     <Text style={styles.textLeft}>
                       {item.name}, {item.age}
@@ -218,12 +171,9 @@ class PhotoCard extends Component {
                     <Button
                       transparent
                       style={styles.bookBtn}
-                      textStyle={{ color: '#797979', fontWeight: '900' }}
+                      textStyle={styles.cardButton}
                     >
-                      <Icon
-                        name="md-book"
-                        style={{ color: '#797979', paddingRight: 4 }}
-                      />
+                      <Icon name="md-book" style={styles.cardIcon} />
                       <Text style={styles.textLeft}>
                         {item.num}
                       </Text>
@@ -236,47 +186,25 @@ class PhotoCard extends Component {
         <Grid style={styles.bottomGrid}>
           <Row style={styles.bottomRowStyle}>
             <TouchableOpacity style={styles.bottomRoundedSmallPills}>
-              <Icon
-                name="md-refresh"
-                style={{
-                  color: '#F0CB2C',
-                  fontSize: 34,
-                  lineHeight: 34,
-                  marginTop: Platform.OS === 'ios' ? -2 : -6,
-                }}
-              />
+              <Icon name="md-refresh" style={styles.refreshIcon} />
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.bottomRoundedPills}
               onPress={() => this._deckSwiper._root.swipeLeft()}
             >
-              <Icon
-                name="md-close"
-                style={{ color: '#EF5D6C', fontSize: 40, lineHeight: 40 }}
-              />
+              <Icon name="md-close" style={styles.closeIcon} />
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.bottomRoundedPills}
               onPress={() => this._deckSwiper._root.swipeRight()}
             >
-              <Icon
-                name="md-heart"
-                style={{ color: '#59DBB6', fontSize: 40, lineHeight: 40 }}
-              />
+              <Icon name="md-heart" style={styles.heartIcon} />
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.bottomRoundedSmallPills}
               onPress={() => Actions.photoCardDetails()}
             >
-              <Icon
-                name="md-star"
-                style={{
-                  color: '#28B8F6',
-                  fontSize: 35,
-                  marginTop: Platform.OS === 'ios' ? -4 : -7,
-                  lineHeight: 35,
-                }}
-              />
+              <Icon name="md-star" style={styles.starIcon} />
             </TouchableOpacity>
           </Row>
         </Grid>

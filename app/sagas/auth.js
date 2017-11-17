@@ -13,7 +13,7 @@ const isUnauthenticatedRouteName = routeConfig.isUnauthenticatedRouteName;
 const initialAuthenticatedRouteName = routeConfig.getInitialAuthenticatedRouteName();
 const initialUnauthenticatedRouteName = routeConfig.getInitialUnauthenticatedRouteName();
 
-function* redirectFlow() {
+const redirectFlow = function* redirectFlow() {
   let state = yield select();
   state = state.toJS();
   const authenticated = state.app.authenticated;
@@ -36,17 +36,17 @@ function* redirectFlow() {
       }),
     );
   }
-}
+};
 
-function* authenticateFlow() {
+const authenticateFlow = function* authenticateFlow() {
   yield put(AppActions.redirect());
-}
+};
 
-function* unauthenticateFlow() {
+const unauthenticateFlow = function* unauthenticateFlow() {
   yield put(AppActions.redirect());
-}
+};
 
-function* requestLoginAsync({ payload }) {
+const requestLoginAsync = function* requestLoginAsync({ payload }) {
   const response = yield call(api.auth.login, payload.toJS());
   if (!response.data.err) {
     yield put(AuthActions.loginSuccess(response.data));
@@ -56,7 +56,7 @@ function* requestLoginAsync({ payload }) {
   } else {
     yield put(AuthActions.loginError(response.data.err));
   }
-}
+};
 
 const asyncAuthWatchers = [
   function* asyncRedirectWatcher() {

@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
-import Chat from '../components/chat';
-import Profile from '../components/profile';
-import PhotoCard from '../components/photocard';
-import CustomTabBar from '../components/tabBar';
-import { makeSelectUser } from '../selectors/app';
+import Chat from '../../components/chat';
+import Profile from '../../components/profile';
+import PhotoCard from '../../components/photocard';
+import CustomTabBar from '../../components/tabBar';
+import { makeSelectUser } from '../../selectors/app';
+
+import styles from './styles';
 
 class Home extends Component {
   componentDidMount() {}
@@ -16,7 +18,7 @@ class Home extends Component {
       <ScrollableTabView
         locked
         initialPage={1}
-        style={{ backgroundColor: '#F5F7FB' }}
+        style={styles.homeContainer}
         renderTabBar={() => <CustomTabBar />}
       >
         <Profile {...this.props} tabLabel="md-person" />

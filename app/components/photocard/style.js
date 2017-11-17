@@ -1,11 +1,26 @@
 import { Platform, Dimensions } from 'react-native';
 const { width, height } = Dimensions.get('window');
 
+const defaultState = {
+  direction: null,
+  opac: 0,
+};
+
 export default {
   wrapper: {
     flex: 1,
     backgroundColor: '#FFF',
     marginTop: 1,
+  },
+  wrapperView: {
+    marginHorizontal: 15,
+    marginTop: 15,
+    flex: 1,
+  },
+  cardItem: {
+    borderTopLeftRadius: 10,
+    overflow: 'hidden',
+    borderTopRightRadius: 10,
   },
   imageView: {
     marginTop: 10,
@@ -21,11 +36,69 @@ export default {
     borderBottomLeftRadius: 0,
     borderBottomRightRadius: 0,
   },
+  card: {
+    borderRadius: 10,
+  },
   cardMain: {
-    height: (width < 330) ? ((Platform.OS === 'ios') ? (height / 1.8) : (height / 1.9)) : ((Platform.OS === 'ios') ? (height / 1.6) : (height / 1.75)),
+    height:
+      width < 330
+        ? Platform.OS === 'ios' ? height / 1.8 : height / 1.9
+        : Platform.OS === 'ios' ? height / 1.6 : height / 1.75,
     resizeMode: 'cover',
     flex: 1,
     width: null,
+  },
+  cardMainViewLeft: {
+    opacity: -defaultState.opac / 150,
+    position: 'absolute',
+    right: 30,
+    top: 40,
+    borderWidth: 2,
+    borderRadius: 5,
+    borderColor: '#F7524C',
+    width: 100,
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    transform: [{ rotate: '20deg' }],
+  },
+  cardMainTextLeft: {
+    backgroundColor: 'transparent',
+    fontSize: 30,
+    color: '#F7524C',
+    fontWeight: '900',
+    textAlign: 'center',
+    lineHeight: 35,
+  },
+  cardMainViewRight: {
+    opacity: defaultState.opac / 150,
+    position: 'absolute',
+    left: 30,
+    top: 40,
+    borderWidth: 2,
+    borderRadius: 5,
+    borderColor: '#59DBB6',
+    width: 100,
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    transform: [{ rotate: '-20deg' }],
+  },
+  cardMainTextRight: {
+    backgroundColor: 'transparent',
+    fontSize: 30,
+    color: '#59DBB6',
+    fontWeight: '900',
+    textAlign: 'center',
+    lineHeight: 35,
+  },
+  cardButton: {
+    color: '#797979',
+    fontWeight: '900',
+  },
+  cardIcon: {
+    color: '#797979',
+    paddingRight: 4,
   },
   subtextLeft: {
     fontSize: 13,
@@ -81,7 +154,7 @@ export default {
     shadowOpacity: 0.2,
     shadowRadius: 3,
     borderColor: '#aaa',
-    borderWidth: (Platform.OS === 'ios') ? undefined : 0.2,
+    borderWidth: Platform.OS === 'ios' ? undefined : 0.2,
     shadowOffset: {
       height: 2,
       width: 1,
@@ -100,15 +173,37 @@ export default {
     shadowOpacity: 0.2,
     shadowRadius: 3,
     borderColor: '#aaa',
-    borderWidth: (Platform.OS === 'ios') ? undefined : 0.2,
+    borderWidth: Platform.OS === 'ios' ? undefined : 0.2,
     shadowOffset: {
       height: 2,
       width: 1,
     },
   },
   bottomRowStyle: {
-    marginTop: (Platform.OS === 'android') ? 5 : 10,
+    marginTop: Platform.OS === 'android' ? 5 : 10,
     justifyContent: 'space-around',
   },
   bookBtn: {},
+  refreshIcon: {
+    color: '#F0CB2C',
+    fontSize: 34,
+    lineHeight: 34,
+    marginTop: Platform.OS === 'ios' ? -2 : -6,
+  },
+  closeIcon: {
+    color: '#EF5D6C',
+    fontSize: 40,
+    lineHeight: 40,
+  },
+  heartIcon: {
+    color: '#59DBB6',
+    fontSize: 40,
+    lineHeight: 40,
+  },
+  starIcon: {
+    color: '#28B8F6',
+    fontSize: 35,
+    marginTop: Platform.OS === 'ios' ? -4 : -7,
+    lineHeight: 35,
+  },
 };

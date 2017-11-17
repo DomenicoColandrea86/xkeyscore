@@ -16,9 +16,6 @@ import './app/config/initialize/errors';
 // we need to turn on LayoutAnimation for android
 import './app/config/initialize/layoutAnimation';
 
-// in debug mode, expose some dev tools on the global
-import './app/config/devtools';
-
 export default class App extends React.Component {
   render() {
     return <InitializeApp />;
